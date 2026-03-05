@@ -1,0 +1,16 @@
+{
+  "title": "My GitHub Pages Site",
+  "description": "A simple site powered by JSON content",
+  "sections": [
+    {
+      "id": "hero",
+      "title": "Welcome",
+      "content": "This is a simple website that updates automatically when you change the JSON content."
+    },
+    {
+      "id": "about",
+      "title": "About",
+      "content": "Edit the content/pages.json file to update this website. When you commit and push, GitHub Actions will automatically rebuild and deploy the site."
+    }
+  ]
+}
