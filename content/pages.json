@@ -5,13 +5,13 @@
     {
       "id": "hero",
       "title": "This is our first box",
-<<<<<<< HEAD
+
       "content": "This is a simple website that updates automatically when you change the JSON content."
-=======
+
       "content": "This is a simple website that updates automatically when you change the JSON content.",
       "image": "images/happy_man.jpeg",
       "tooltip": "This is the exited/happy man image!"
->>>>>>> ebadf132c8f4da32e6305c07ef65e7bba5c3a2ae
+
     },
     {
       "id": "about",
