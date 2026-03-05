@@ -6,16 +6,16 @@
       "id": "hero",
       "title": "This is our first box",
       "content": "This is a simple website that updates automatically when you change the JSON content.",
-      "image": "https://via.placeholder.com/400x300/3498db/ffffff?text=Sample+Image",
-      "tooltip": "Hover over images to see tooltips! This image is just a placeholder - replace the URL with your own image."
+      "image": "images/happy_man.jpeg",
+      "tooltip": "This is the exited/happy man image!"
     },
     {
       "id": "about",
       "title": "This is our second box",
       "content": "Edit the content/pages.json file to update this website. When you commit and push, GitHub Actions will automatically rebuild and deploy the site.",
       "contentTooltip": "This tooltip appears when you hover over the text content!",
-      "image": "https://via.placeholder.com/400x300/e74c3c/ffffff?text=Another+Image",
-      "tooltip": "You can add tooltips to images by including a 'tooltip' field in the JSON."
+      "image": "images/thinking_person.jpeg",
+      "tooltip": "This is the thinking person image!"
     },
     {
       "id": "confused",
