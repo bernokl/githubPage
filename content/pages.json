@@ -1,15 +1,15 @@
 {
-  "title": "My GitHub Pages Site",
-  "description": "A simple site powered by JSON content",
+  "title": "Bernokl's GitHub Pages",
+  "description": "THis is a page Mr Matt and Berno is nerding out on",
   "sections": [
     {
       "id": "hero",
-      "title": "Welcome",
+      "title": "This is our first box",
       "content": "This is a simple website that updates automatically when you change the JSON content."
     },
     {
       "id": "about",
-      "title": "About",
+      "title": "This is our second box",
       "content": "Edit the content/pages.json file to update this website. When you commit and push, GitHub Actions will automatically rebuild and deploy the site."
     }
   ]
