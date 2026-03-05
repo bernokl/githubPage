@@ -4,13 +4,23 @@
   "sections": [
     {
       "id": "hero",
-      "title": "This is our first box of tacos",
+      "title": "This is our first box",
       "content": "This is a simple website that updates automatically when you change the JSON content."
     },
     {
       "id": "about",
       "title": "This is our second box",
-      "content": "Edit the content/pages.json file to update this website. When you commit and push, GitHub Actions will automatically rebuild and deploy the site."
+      "content": "Edit the content/pages.json file to update this website. When you commit and push, GitHub Actions will automatically rebuild and deploy the site.",
+      "contentTooltip": "This tooltip appears when you hover over the text content!",
+      "image": "https://via.placeholder.com/400x300/e74c3c/ffffff?text=Another+Image",
+      "tooltip": "You can add tooltips to images by including a 'tooltip' field in the JSON."
+    },
+    {
+      "id": "confused",
+      "title": "Confused Man",
+      "content": "This section features a screenshot image. The image is stored in the images/ folder and referenced with a relative path.",
+      "image": "images/Screenshot_20260304_205105.png",
+      "tooltip": "This is your screenshot! Images in the images/ folder are automatically available on GitHub Pages."
     }
   ]
 }
