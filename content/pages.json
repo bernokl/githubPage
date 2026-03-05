@@ -1,13 +1,17 @@
 {
   "title": "Bernokl's GitHub Pages",
-  "description": "THis is a page Mr Matt and Berno is nerding out on",
+  "description": "THis is a page Mr Matt and Berno is nerding out on WEDNESDAY1",
   "sections": [
     {
       "id": "hero",
       "title": "This is our first box",
+
+      "content": "This is a simple website that updates automatically when you change the JSON content."
+
       "content": "This is a simple website that updates automatically when you change the JSON content.",
       "image": "images/happy_man.jpeg",
       "tooltip": "This is the exited/happy man image!"
+
     },
     {
       "id": "about",
