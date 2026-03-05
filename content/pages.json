@@ -20,9 +20,9 @@
     {
       "id": "confused",
       "title": "Confused Man",
-      "content": "This section features a confused man image. To use your own image, right-click on an image from Google search results, select 'Copy image address', and paste that URL here.",
-      "image": "https://via.placeholder.com/400x300/9b59b6/ffffff?text=Confused+Man",
-      "tooltip": "Replace this placeholder with a direct image URL. Right-click any image in Google search results and choose 'Copy image address' to get the direct URL."
+      "content": "This section features a screenshot image. The image is stored in the images/ folder and referenced with a relative path.",
+      "image": "images/Screenshot_20260304_205105.png",
+      "tooltip": "This is your screenshot! Images in the images/ folder are automatically available on GitHub Pages."
     }
   ]
 }
