@@ -60,9 +60,21 @@
         <div id="sections"></div>
     </div>
     <script>
-        // Load content from JSON
-        fetch('content/pages.json')
-            .then(response => response.json())
+        // Load content from JSON with cache-busting
+        // Add timestamp to prevent browser caching
+        const cacheBuster = '?v=' + new Date().getTime();
+        fetch('content/pages.json' + cacheBuster, {
+            cache: 'no-store',
+            headers: {
+                'Cache-Control': 'no-cache'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 // Set page title and description
                 document.getElementById('page-title').textContent = data.title;
@@ -71,6 +83,7 @@
                 
                 // Render sections
                 const sectionsContainer = document.getElementById('sections');
+                sectionsContainer.innerHTML = ''; // Clear existing content
                 data.sections.forEach(section => {
                     const sectionDiv = document.createElement('div');
                     sectionDiv.className = 'section';
@@ -84,6 +97,7 @@
             .catch(error => {
                 console.error('Error loading content:', error);
                 document.getElementById('site-title').textContent = 'Error loading content';
+                document.getElementById('site-description').textContent = 'Please check the browser console for details.';
             });
     </script>
 </body>
