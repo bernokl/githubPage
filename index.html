@@ -51,6 +51,65 @@
             color: #7f8c8d;
             margin-bottom: 2rem;
         }
+        .section-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: block;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip-image {
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+        .tooltip-image:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -87,9 +146,40 @@
                 data.sections.forEach(section => {
                     const sectionDiv = document.createElement('div');
                     sectionDiv.className = 'section';
+                    
+                    let imageHTML = '';
+                    if (section.image) {
+                        if (section.tooltip) {
+                            // Image with tooltip
+                            imageHTML = `
+                                <div class="image-container">
+                                    <span class="tooltip">
+                                        <img src="${section.image}" alt="${section.title}" class="section-image tooltip-image">
+                                        <span class="tooltiptext">${section.tooltip}</span>
+                                    </span>
+                                </div>
+                            `;
+                        } else {
+                            // Image without tooltip
+                            imageHTML = `<img src="${section.image}" alt="${section.title}" class="section-image">`;
+                        }
+                    }
+                    
+                    // Support for tooltips on text content
+                    let contentHTML = section.content;
+                    if (section.contentTooltip) {
+                        contentHTML = `
+                            <span class="tooltip">
+                                ${section.content}
+                                <span class="tooltiptext">${section.contentTooltip}</span>
+                            </span>
+                        `;
+                    }
+                    
                     sectionDiv.innerHTML = `
                         <h2>${section.title}</h2>
-                        <p>${section.content}</p>
+                        ${imageHTML}
+                        <p>${contentHTML}</p>
                     `;
                     sectionsContainer.appendChild(sectionDiv);
                 });
