@@ -110,6 +110,14 @@
         .tooltip-image:hover {
             transform: scale(1.05);
         }
+        .section-meta {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 0.75rem;
+        }
+        .section-meta span:not(:last-child)::after {
+            content: " · ";
+        }
     </style>
 </head>
 <body>
@@ -135,54 +143,72 @@
                 return response.json();
             })
             .then(data => {
-                // Set page title and description
-                document.getElementById('page-title').textContent = data.title;
-                document.getElementById('site-title').textContent = data.title;
-                document.getElementById('site-description').textContent = data.description;
-                
-                // Render sections
+                // data is the array of entries (root array) or legacy object with title, description, sections
+                const entries = Array.isArray(data) ? data : (data.sections || []);
+                const siteTitle = !Array.isArray(data) && data.title ? data.title : 'GitHub Pages';
+                const siteDescription = !Array.isArray(data) && data.description ? data.description : '';
+
+                document.getElementById('page-title').textContent = siteTitle;
+                document.getElementById('site-title').textContent = siteTitle;
+                const descEl = document.getElementById('site-description');
+                descEl.textContent = siteDescription;
+                descEl.style.display = siteDescription ? '' : 'none';
+
+                // Render each entry using all fields: id, name, role, organization, title, category, avatar, bio, tooltip, contentTooltip
                 const sectionsContainer = document.getElementById('sections');
-                sectionsContainer.innerHTML = ''; // Clear existing content
-                data.sections.forEach(section => {
+                sectionsContainer.innerHTML = '';
+                entries.forEach((entry, index) => {
                     const sectionDiv = document.createElement('div');
                     sectionDiv.className = 'section';
-                    
+                    if (entry.id) sectionDiv.id = entry.id;
+
+                    // Meta line: role, organization, title, category (only show non-empty)
+                    const metaParts = [entry.role, entry.organization, entry.title, entry.category].filter(Boolean);
+                    const metaHTML = metaParts.length
+                        ? `<p class="section-meta">${metaParts.map(part => `<span>${escapeHtml(part)}</span>`).join('')}</p>`
+                        : '';
+
                     let imageHTML = '';
-                    if (section.image) {
-                        if (section.tooltip) {
-                            // Image with tooltip
+                    if (entry.avatar) {
+                        const alt = entry.name || entry.id || 'Image';
+                        if (entry.tooltip) {
                             imageHTML = `
                                 <div class="image-container">
                                     <span class="tooltip">
-                                        <img src="${section.image}" alt="${section.title}" class="section-image tooltip-image">
-                                        <span class="tooltiptext">${section.tooltip}</span>
+                                        <img src="${escapeHtml(entry.avatar)}" alt="${escapeHtml(alt)}" class="section-image tooltip-image">
+                                        <span class="tooltiptext">${escapeHtml(entry.tooltip)}</span>
                                     </span>
                                 </div>
                             `;
                         } else {
-                            // Image without tooltip
-                            imageHTML = `<img src="${section.image}" alt="${section.title}" class="section-image">`;
+                            imageHTML = `<img src="${escapeHtml(entry.avatar)}" alt="${escapeHtml(alt)}" class="section-image">`;
                         }
                     }
-                    
-                    // Support for tooltips on text content
-                    let contentHTML = section.content;
-                    if (section.contentTooltip) {
+
+                    let contentHTML = entry.bio ? escapeHtml(entry.bio) : '';
+                    if (entry.contentTooltip && contentHTML) {
                         contentHTML = `
                             <span class="tooltip">
-                                ${section.content}
-                                <span class="tooltiptext">${section.contentTooltip}</span>
+                                ${contentHTML}
+                                <span class="tooltiptext">${escapeHtml(entry.contentTooltip)}</span>
                             </span>
                         `;
                     }
-                    
+
                     sectionDiv.innerHTML = `
-                        <h2>${section.title}</h2>
+                        <h2>${escapeHtml(entry.name || entry.id || '')}</h2>
+                        ${metaHTML}
                         ${imageHTML}
-                        <p>${contentHTML}</p>
+                        ${contentHTML ? `<p>${contentHTML}</p>` : ''}
                     `;
                     sectionsContainer.appendChild(sectionDiv);
                 });
+
+                function escapeHtml(text) {
+                    const div = document.createElement('div');
+                    div.textContent = text;
+                    return div.innerHTML;
+                }
             })
             .catch(error => {
                 console.error('Error loading content:', error);
