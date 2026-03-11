@@ -1,28 +1,36 @@
-{
-  "title": "Bernokl's GitHub Pages",
-  "description": "THis is a page Mr Matt and Berno is nerding out on WEDNESDAY1",
-  "sections": [
-    {
-      "id": "hero",
-      "title": "This is our first box ..of pizza!",
-      "content": "This is a simple website that updates automatically when you change the JSON content.",
-      "image": "images/happy_man.jpeg",
-      "tooltip": "This is the exited/happy man image!"
-    },
-    {
-      "id": "about",
-      "title": "This is our second box",
-      "content": "Edit the content/pages.json file to update this website. When you commit and push, GitHub Actions will automatically rebuild and deploy the site.",
-      "contentTooltip": "This tooltip appears when you hover over the text content!",
-      "image": "images/thinking_person.jpeg",
-      "tooltip": "This is the thinking person image!"
-    },
-    {
-      "id": "confused",
-      "title": "Confused Man",
-      "content": "This section features a screenshot image. The image is stored in the images/ folder and referenced with a relative path.",
-      "image": "images/Screenshot_20260304_205105.png",
-      "tooltip": "This is your screenshot! Images in the images/ folder are automatically available on GitHub Pages."
-    }
-  ]
-}
+[
+  {
+    "id": "hero",
+    "name": "This is our first box ..of pizza!",
+    "role": "",
+    "organization": "",
+    "title": "",
+    "category": "",
+    "avatar": "images/happy_man.jpeg",
+    "bio": "This is a simple website that updates automatically when you change the JSON content.",
+    "tooltip": "This is the exited/happy man image!"
+  },
+  {
+    "id": "about",
+    "name": "This is our second box",
+    "role": "",
+    "organization": "",
+    "title": "",
+    "category": "",
+    "avatar": "images/thinking_person.jpeg",
+    "bio": "Edit the content/pages.json file to update this website. When you commit and push, GitHub Actions will automatically rebuild and deploy the site.",
+    "tooltip": "This is the thinking person image!",
+    "contentTooltip": "This tooltip appears when you hover over the text content!"
+  },
+  {
+    "id": "confused",
+    "name": "Confused Man",
+    "role": "",
+    "organization": "",
+    "title": "",
+    "category": "",
+    "avatar": "images/Screenshot_20260304_205105.png",
+    "bio": "This section features a screenshot image. The image is stored in the images/ folder and referenced with a relative path.",
+    "tooltip": "This is your screenshot! Images in the images/ folder are automatically available on GitHub Pages."
+  }
+]
