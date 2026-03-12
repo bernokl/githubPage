@@ -9,7 +9,7 @@
         {{ if .image }}
         <div class="image-container">
             <span class="tooltip">
-                <img src="/{{ .image }}" alt="{{ .title }}" class="section-image tooltip-image">
+                <img src="{{ (printf "/%s" .image) | absURL }}" alt="{{ .title }}" class="section-image tooltip-image">
                 {{ if .tooltip }}
                 <span class="tooltiptext">{{ .tooltip }}</span>
                 {{ end }}
