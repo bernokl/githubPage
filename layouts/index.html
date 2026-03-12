@@ -1,0 +1,32 @@
+{{ define "main" }}
+    <h1>{{ .Site.Data.pages.title }}</h1>
+    <p class="description">{{ .Site.Data.pages.description }}</p>
+    
+    {{ range .Site.Data.pages.sections }}
+    <div class="section">
+        <h2>{{ .title }}</h2>
+        
+        {{ if .image }}
+        <div class="image-container">
+            <span class="tooltip">
+                <img src="/{{ .image }}" alt="{{ .title }}" class="section-image tooltip-image">
+                {{ if .tooltip }}
+                <span class="tooltiptext">{{ .tooltip }}</span>
+                {{ end }}
+            </span>
+        </div>
+        {{ end }}
+        
+        <p>
+            {{ if .contentTooltip }}
+            <span class="tooltip">
+                {{ .content }}
+                <span class="tooltiptext">{{ .contentTooltip }}</span>
+            </span>
+            {{ else }}
+            {{ .content }}
+            {{ end }}
+        </p>
+    </div>
+    {{ end }}
+{{ end }}

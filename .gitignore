@@ -12,3 +12,7 @@ Thumbs.db
 # Build artifacts (if you add a build step later)
 dist/
 build/
+
+# Hugo build output
+public/
+resources/
