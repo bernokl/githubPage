@@ -7,14 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        description: 'Branch to deploy from'
+        description: 'Branch to deploy from (e.g., main, hugo_conversion, matts_branch)'
         required: true
-        type: choice
-        options:
-          - main
-          - matts_branch
-          - bernos_branch
-          - document_branch
+        type: string
         default: 'main'
 
 # Set Node.js 24 for all actions
