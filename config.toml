@@ -1,0 +1,7 @@
+baseURL = 'https://bernokl.github.io/githubPage/'
+languageCode = 'en-us'
+title = "Bernokl's GitHub Pages"
+description = "THis is a page Mr Matt and Berno is nerding out on WEDNESDAY1"
+
+[params]
+  description = "THis is a page Mr Matt and Berno is nerding out on WEDNESDAY1"
